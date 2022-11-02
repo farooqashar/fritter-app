@@ -38,6 +38,21 @@ const isValidUsername = (req: Request, res: Response, next: NextFunction) => {
 };
 
 /**
+ * Checks if a user bio is valid
+ */
+const isValidBio = async (req: Request, res: Response, next: NextFunction) => {
+  if (req.body.bio) {
+    const {bio} = req.body as {bio: string};
+    if (bio.length > 500) {
+      res.status(400).json({error: {bio: `User bio cannot be more than 500 characters. It is currently ${bio.length} characters`}});
+      return;
+    }
+  }
+
+  next();
+};
+
+/**
  * Checks if a password in req.body is valid, that is, at 6-50 characters long without any spaces
  */
 const isValidPassword = (req: Request, res: Response, next: NextFunction) => {
@@ -152,5 +167,6 @@ export {
   isAccountExists,
   isAuthorExists,
   isValidUsername,
-  isValidPassword
+  isValidPassword,
+  isValidBio
 };

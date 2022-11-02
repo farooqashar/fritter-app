@@ -16,17 +16,32 @@ class FreetCollection {
    * Add a freet to the collection
    *
    * @param {string} authorId - The id of the author of the freet
-   * @param {string} content - The id of the content of the freet
+   * @param {Record<string, unknown>} objectInfo - object with the info for freet
    * @return {Promise<HydratedDocument<Freet>>} - The newly created freet
    */
-  static async addOne(authorId: Types.ObjectId | string, content: string): Promise<HydratedDocument<Freet>> {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  static async addOne(authorId: Types.ObjectId | string, objectInfo: any): Promise<HydratedDocument<Freet>> {
     const date = new Date();
+    if (objectInfo.source) {
+      const freet = new FreetModel({
+        authorId,
+        dateCreated: date,
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+        content: objectInfo.content,
+        dateModified: date,
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+        source: objectInfo.source
+      });
+      await freet.save(); // Saves freet to MongoDB
+      return freet.populate('authorId');
+    }
+
     const freet = new FreetModel({
       authorId,
       dateCreated: date,
-      content,
-      dateModified: date
-    });
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+      content: objectInfo.content,
+      dateModified: date});
     await freet.save(); // Saves freet to MongoDB
     return freet.populate('authorId');
   }
@@ -63,16 +78,57 @@ class FreetCollection {
   }
 
   /**
-   * Update a freet with the new content
+   * Update a freet with the any new information
    *
    * @param {string} freetId - The id of the freet to be updated
-   * @param {string} content - The new content of the freet
+   * @param {Record<string, unknown>} updateObj - object with some updated information
    * @return {Promise<HydratedDocument<Freet>>} - The newly updated freet
    */
-  static async updateOne(freetId: Types.ObjectId | string, content: string): Promise<HydratedDocument<Freet>> {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  static async updateOne(freetId: Types.ObjectId | string, updateObj: any): Promise<HydratedDocument<Freet>> {
     const freet = await FreetModel.findOne({_id: freetId});
-    freet.content = content;
-    freet.dateModified = new Date();
+    if (updateObj.content) {
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+      freet.content = updateObj.content;
+      freet.dateModified = new Date();
+      freet.edited = true;
+    }
+
+    if (updateObj.likes) {
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+      freet.likes = updateObj.likes;
+    }
+
+    if (updateObj.laughs) {
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+      freet.laughs = updateObj.laughs;
+    }
+
+    if (updateObj.loves) {
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+      freet.loves = updateObj.loves;
+    }
+
+    if (updateObj.angries) {
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+      freet.angries = updateObj.angries;
+    }
+
+    if (updateObj.sadness) {
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+      freet.sadness = updateObj.sadness;
+    }
+
+    if (updateObj.reports) {
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+      freet.reports = updateObj.reports;
+    }
+
+    if (updateObj.source) {
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+      freet.source = updateObj.source;
+    }
+
     await freet.save();
     return freet.populate('authorId');
   }

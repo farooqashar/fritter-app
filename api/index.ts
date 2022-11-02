@@ -10,6 +10,13 @@ import * as userValidator from '../server/user/middleware';
 import {userRouter} from '../server/user/router';
 import {freetRouter} from '../server/freet/router';
 import MongoStore from 'connect-mongo';
+import {exampleFreetRouter} from '../server/exampleFreets/router';
+import {userRelationshipRouter} from '../server/relationships/router';
+import {enemiesRouter} from '../server/enemies/router';
+import {HOFRouter} from '../server/halloffame/router';
+import {credibilityCreditRouter} from '../server/credibilityCredits/router';
+import {followRouter} from '../server/follow/router';
+import {timelineRouter} from '../server/timeline/router';
 
 // Load environmental variables
 dotenv.config({});
@@ -70,6 +77,13 @@ app.use(userValidator.isCurrentSessionUserExists);
 // Add routers from routes folder
 app.use('/api/users', userRouter);
 app.use('/api/freets', freetRouter);
+app.use('/api/exampleFreets', exampleFreetRouter);
+app.use('/api/users/relationships', userRelationshipRouter);
+app.use('/api/users/enemies', enemiesRouter);
+app.use('/api/users/following', followRouter);
+app.use('/api/halloffame', HOFRouter);
+app.use('/api/users/credibilitycredits', credibilityCreditRouter);
+app.use('/api/timeline', timelineRouter);
 
 // Catch all the other routes and display error message
 app.all('*', (req: Request, res: Response) => {
