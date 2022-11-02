@@ -8,6 +8,25 @@ import * as util from './util';
 const router = express.Router();
 
 /**
+ * Get the signed in user
+ *
+ * @name GET /api/users/session
+ *
+ * @return - currently logged in user, or null if not logged in
+ */
+router.get(
+  '/session',
+  [],
+  async (req: Request, res: Response) => {
+    const user = await UserCollection.findOneByUserId(req.session.userId);
+    res.status(200).json({
+      message: 'Your session info was found successfully.',
+      user: user ? util.constructUserResponse(user) : null
+    });
+  }
+);
+
+/**
  * Sign in user.
  *
  * @name POST /api/users/session
