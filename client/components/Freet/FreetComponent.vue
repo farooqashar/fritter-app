@@ -122,7 +122,7 @@ export default {
       }
 
       const params = {
-        method: 'PATCH',
+        method: 'PUT',
         message: 'Successfully edited freet!',
         body: JSON.stringify({content: this.draft}),
         callback: () => {
