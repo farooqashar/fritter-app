@@ -7,13 +7,9 @@
       <header>
         <h2>@{{ $store.state.username }}'s Hall of Fame</h2>
       </header>
-      <CelebrationConfetti />
     </section>
-    <section>
-      <header>
-        <h2>Hall of Fame</h2>
-      </header>
-    </section>
+    <h2>Hall of Fame</h2>
+    <CelebrationConfetti />
   </main>
 </template>
 

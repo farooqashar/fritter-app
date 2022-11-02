@@ -1,4 +1,4 @@
-// from https://blog.logrocket.com/how-create-confetti-effect-css/
+// CODE CREDIT: This confetti component code is taken from https://blog.logrocket.com/how-create-confetti-effect-css/
 
 <template>
   <body>
