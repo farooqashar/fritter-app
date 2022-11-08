@@ -119,7 +119,8 @@ export default {
 
 <style scoped>
 form {
-  border: 1px solid #111;
+  border: 2px solid #111;
+  border-radius: 2px;
   padding: 0.5rem;
   display: flex;
   flex-direction: column;
