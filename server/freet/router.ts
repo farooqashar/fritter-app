@@ -133,4 +133,28 @@ router.put(
   }
 );
 
+/**
+ * Get specific freet
+ *
+ * @name GET /api/freets/:freetId
+ *
+ * @return {string} - A success message
+ * @throws {403} - If the user is not logged in or is not the author of
+ *                 the freet
+ * @throws {404} - If the freetId is not valid
+ */
+router.get(
+  '/:freetId?',
+  [
+    userValidator.isUserLoggedIn
+  ],
+  async (req: Request, res: Response) => {
+    const freet = await FreetCollection.findOne(req.params.freetId);
+    res.status(200).json({
+      message: 'Your freet acquired.',
+      freet: util.constructFreetResponse(freet)
+    });
+  }
+);
+
 export {router as freetRouter};

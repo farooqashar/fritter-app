@@ -83,8 +83,12 @@ router.get(
     }
 
     const HOFObject = await HOFCollection.findHallOfFameObj(req.query.userId as string);
-    const response = util.constructHOFResponse(HOFObject);
-    res.status(200).json(response);
+    if (HOFObject) {
+      const response = util.constructHOFResponse(HOFObject);
+      res.status(200).json(response);
+    } else {
+      res.json({error: 'No HOF Object Found'});
+    }
   }
 );
 

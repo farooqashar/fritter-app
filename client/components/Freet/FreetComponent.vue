@@ -34,6 +34,9 @@
         <button @click="deleteFreet">
           🗑️ Delete
         </button>
+        <button @click="toggleHOF">
+          Hall of Fame Toggle 
+        </button>
       </div>
     </header>
     <textarea
@@ -109,6 +112,46 @@ export default {
         }
       };
       this.request(params);
+    },
+    async toggleHOF() {
+        const url = this.$store.state.userId ? `/api/halloffame/freets?userId=${this.$store.state.userId}` : '/api/freets';
+                try {
+                const r = await fetch(url);
+                const res = await r.json();
+                if (res.error || res.length === 0) {
+                    const options = {
+                                method: "POST",
+                                headers: {'Content-Type': 'application/json'},
+                            };
+
+                    await fetch("/api/halloffame", options);
+
+                    const updateOptions = {
+                                method: "PUT",
+                                headers: {'Content-Type': 'application/json'},
+                    };
+
+                    updateOptions.body = JSON.stringify({ freetId: this.freet._id })
+                    const newResult = await fetch("/api/halloffame/freets", updateOptions);
+                    this.$store.commit('updateHOFFreets', newResult.freets);
+                } else {
+                    if (res) {
+
+                    const options = {
+                                method: "PUT",
+                                headers: {'Content-Type': 'application/json'},
+                            };
+
+                    options.body = JSON.stringify({ freetId: this.freet._id })
+                    const result = await fetch("/api/halloffame/freets", options);
+
+                  this.$store.commit('updateHOFFreets', result.freets);
+                }
+              }
+
+             } catch (e) {
+            console.warn(e)
+             }
     },
     submitEdit() {
       /**
