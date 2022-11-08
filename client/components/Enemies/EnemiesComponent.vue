@@ -1,0 +1,95 @@
+<template>
+  <main>
+    <form @submit.prevent="submit">
+      <section>
+        <label :for="enemiList">Enemies:</label>
+        <textarea
+          :name="enemiList"
+          :value="$store.state.enemies"
+          @input="ene = $event.target.value"
+        />
+      </section>
+      <button
+        type="submit"
+      >
+        Save
+      </button>
+    </form>
+  </main>
+</template>
+
+<script>
+
+export default {
+
+        components: {
+        },
+        data() {
+          return {
+            ene: []
+          }
+        },
+       mounted() {
+         this.getEnemies()
+      },
+        methods: {
+        async submit() {
+            const url = this.$store.state.userId ? `/api/users/enemies?userId=${this.$store.state.userId}` : '/api/freets';
+                        try {
+                const r = await fetch(url);
+                const res = await r.json();
+                if (res.error || res.length === 0) {
+                    const options = {
+                                method: "POST",
+                                headers: {'Content-Type': 'application/json'},
+                            };
+
+                    options.body = JSON.stringify({ enemies: [] })
+                    await fetch("/api/users/enemies", options);
+                    this.$store.commit('updateEnemies', []);
+                } else {
+                    if (res) {
+
+                    const options = {
+                                method: "PUT",
+                                headers: {'Content-Type': 'application/json'},
+                            };
+
+                    options.body = JSON.stringify({ enemies: this.ene })
+                    await fetch("/api/users/enemies", options);
+
+                      this.$store.commit('updateEnemies', this.ene);
+                    }
+                }
+
+             } catch (e) {
+            console.warn(e)
+             }
+        },
+        async getEnemies() {
+            const url = this.$store.state.userId ? `/api/users/enemies?userId=${this.$store.state.userId}` : '/api/freets';
+            try {
+                const r = await fetch(url);
+                const res = await r.json();
+                if (res.error || res.length === 0) {
+                    const options = {
+                                method: "POST",
+                                headers: {'Content-Type': 'application/json'},
+                            };
+
+                    options.body = JSON.stringify({ enemies: [] })
+                    await fetch("/api/users/enemies", options);
+                    this.$store.commit('updateEnemies', []);
+                } else {
+                    if (res) {
+                      this.$store.commit('updateEnemies', res.enemies);
+                    }
+                }
+
+             } catch (e) {
+            console.warn(e)
+             }
+        }
+        }
+    }
+</script>

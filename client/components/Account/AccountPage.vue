@@ -7,6 +7,8 @@
       <header>
         <h2>Account settings for @{{ $store.state.username }}</h2>
         <a href="#/editProfile">Edit Profile</a>
+        <br>
+        <a href="#/manageEnemies">Manage Enemies</a>
       </header>
       <ChangeUsernameForm />
       <ChangePasswordForm />

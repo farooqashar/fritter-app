@@ -21,8 +21,7 @@ const router = express.Router();
 router.post(
   '/',
   [
-    userValidator.isUserLoggedIn,
-    enemiesValidator.isValidEnemies
+    userValidator.isUserLoggedIn
   ],
   async (req: Request, res: Response) => {
     const userId = (req.session.userId as string) ?? ''; // Will not be an empty string since its validated in isUserLoggedIn
@@ -45,8 +44,7 @@ router.post(
 router.put(
   '/',
   [
-    userValidator.isUserLoggedIn,
-    enemiesValidator.isValidEnemies
+    userValidator.isUserLoggedIn
   ],
   async (req: Request, res: Response) => {
     const userId = (req.session.userId as string) ?? ''; // Will not be an empty string since its validated in isUserLoggedIn
@@ -71,8 +69,7 @@ router.put(
  */
 router.get(
   '/',
-  [userValidator.isUserLoggedIn,
-    relationsValidator.isUserExisting],
+  [userValidator.isUserLoggedIn],
 
   async (req: Request, res: Response) => {
     // Check if authorId query parameter was supplied
@@ -81,8 +78,12 @@ router.get(
     }
 
     const enemyObject = await EnemiesCollection.findEnemiesByUser(req.query.userId as string);
-    const response = util.constructEnemiesResponse(enemyObject);
-    res.status(200).json(response);
+    if (enemyObject) {
+      const response = util.constructEnemiesResponse(enemyObject);
+      res.status(200).json(response);
+    } else {
+      res.json({error: 'No enemy object found'});
+    }
   }
 );
 

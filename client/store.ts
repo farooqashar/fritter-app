@@ -15,6 +15,7 @@ const store = new Vuex.Store({
     selectExampleFreet: {name: "Select an Example Freet"},
     curRelationshipStatus: "",
     bff: [],
+    enemies: [],
     username: null, // Username of the logged in user
     userId: null, // id of the logged in user
     alerts: {} // global success/error messages encountered during submissions to non-visible forms
@@ -84,6 +85,13 @@ const store = new Vuex.Store({
        * @param freets - Freets to store
        */
       state.bff = bff;
+    },
+    updateEnemies(state, enemies) {
+      /**
+       * Update the stored freets to the provided freets.
+       * @param freets - Freets to store
+       */
+      state.enemies = enemies;
     },
     async refreshFreets(state) {
       /**
