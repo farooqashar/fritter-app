@@ -78,6 +78,16 @@ class FreetCollection {
   }
 
   /**
+   * Get all the freets in by given author
+   *
+   * @param {string} username - The username of author of the freets
+   * @return {Promise<HydratedDocument<Freet>[]>} - An array of all of the freets
+   */
+  static async findAllByUserId(userID: string): Promise<Array<HydratedDocument<Freet>>> {
+    return FreetModel.find({authorId: userID}).sort({dateModified: -1}).populate('authorId');
+  }
+
+  /**
    * Update a freet with the any new information
    *
    * @param {string} freetId - The id of the freet to be updated

@@ -1,6 +1,7 @@
 import type {NextFunction, Request, Response} from 'express';
 import express from 'express';
 import CredibilityCollection from './collection';
+import FreetCollection from '../freet/collection';
 import * as userValidator from '../user/middleware';
 import * as credibilityCreditValidator from '../credibilityCredits/middleware';
 import * as relationsValidator from '../relationships/middleware';
@@ -27,8 +28,7 @@ router.put(
   ],
   async (req: Request, res: Response) => {
     const userId = (req.session.userId as string) ?? ''; // Will not be an empty string since its validated in isUserLoggedIn
-
-    const updatedCredibilityObj = await CredibilityCollection.updateOne(userId, req.body.score);
+    const updatedCredibilityObj = await CredibilityCollection.updateOne(userId, 0);
     res.status(200).json({
       message: 'Your Credibility Credit was updated successfully.',
 
@@ -61,8 +61,16 @@ router.get(
 
     const credObj = await CredibilityCollection.findUserCredibilityCredit(req.query.userId as string);
 
-    const response = util.constructCredibilityCreditResponse(credObj);
-    res.status(200).json(response);
+    if (credObj) {
+      const authorFreets = await FreetCollection.findAllByUserId(req.query.userId as string);
+      const filteredFreets = authorFreets.filter(elt => elt.source && elt.source.length > 0);
+
+      credObj.score = filteredFreets.length;
+      const response = util.constructCredibilityCreditResponse(credObj);
+      res.status(200).json(response);
+    } else {
+      res.json({error: 'No credOBJ'});
+    }
   }
 );
 

@@ -12,6 +12,7 @@
       </header>
       <ChangeUsernameForm />
       <ChangePasswordForm />
+      <CredComponent />
     </section>
     <section>
       <header>
@@ -28,6 +29,8 @@ import ChangeUsernameForm from '@/components/Account/ChangeUsernameForm.vue';
 import ChangePasswordForm from '@/components/Account/ChangePasswordForm.vue';
 import DeleteAccountForm from '@/components/Account/DeleteAccountForm.vue';
 import LogoutForm from '@/components/Account/LogoutForm.vue';
+import CredComponent from '/Users/asharfarooq/Downloads/6.1040/Assignments/fritter-app/client/components/CredibilityCredits.vue/CredComponent.vue';
+
 
 export default {
   name: 'AccountPage',
@@ -35,7 +38,8 @@ export default {
     ChangeUsernameForm,
     ChangePasswordForm,
     DeleteAccountForm,
-    LogoutForm 
+    LogoutForm,
+    CredComponent
     }
 };
 </script>

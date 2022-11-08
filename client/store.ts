@@ -17,6 +17,7 @@ const store = new Vuex.Store({
     bff: [],
     enemies: [],
     HOFfreets: [],
+    creds: 0,
     username: null, // Username of the logged in user
     userId: null, // id of the logged in user
     alerts: {} // global success/error messages encountered during submissions to non-visible forms
@@ -100,6 +101,13 @@ const store = new Vuex.Store({
        * @param freets - Freets to store
        */
       state.HOFfreets = HOFfreets;
+    },
+    updateCreds(state, creds) {
+      /**
+       * Update the stored freets to the provided freets.
+       * @param freets - Freets to store
+       */
+      state.creds = creds;
     },
     async refreshFreets(state) {
       /**
