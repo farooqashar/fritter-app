@@ -41,6 +41,7 @@ body {
   padding: 0;
   margin: 0;
   font-size: 1.2em;
+  background-color: #ADD8E6
 }
 
 main {

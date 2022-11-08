@@ -3,10 +3,17 @@
 <template>
   <main>
     <section v-if="$store.state.username">
-      <header>
-        <h2>Welcome @{{ $store.state.username }}</h2>
-      </header>
-      <ExampleFreet />
+      <center>
+        <header>
+          <h2>How are you doing today, {{ $store.state.username }} ?</h2>
+        </header>
+      </center>
+      <section>
+        <ExampleFreet />
+        <center>
+          <h3>Start out by freeting today from a few example Freets above!</h3>
+        </center>
+      </section>
       <CreateFreetForm />
     </section>
     <section v-else>

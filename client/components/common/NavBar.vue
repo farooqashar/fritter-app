@@ -13,18 +13,21 @@
     <div class="right">
       <router-link to="/">
         Home
+        <font-awesome-icon icon="fa-solid fa-house" />
       </router-link>
       <router-link 
         v-if="$store.state.username"
         to="/halloffame"
       >
         Hall of Fame
+        <font-awesome-icon icon="fa-solid fa-star" />
       </router-link>
       <router-link
         v-if="$store.state.username"
         to="/account"
       >
         Account
+        <font-awesome-icon icon="fa-solid fa-user" />
       </router-link>
       <router-link
         v-else

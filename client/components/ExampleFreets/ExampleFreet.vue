@@ -1,19 +1,16 @@
 <template>
-  <main>
-    <section>
-      <a href="#/manageExampleFreets">Manage Example Freets</a>
-    </section>
-    <section>
+  <section id="dropdown">
+    <center>
       <dropdown
-        class="my-dropdown-toggle"
         :options="$store.state.exampleFreets" 
         :selected="$store.state.selectExampleFreet" 
         :placeholder="'Select an Item'" 
         :close-on-outside-click="boolean"
         @updateOption="methodToRunOnSelect"
       />
-    </section>
-  </main>
+      <a href="#/manageExampleFreets"><font-awesome-icon icon="fa-solid fa-plus" /></a>
+    </center>
+  </section>
 </template>
 
 <script>
@@ -70,19 +67,3 @@ export default {
         }
     }
 </script>
-
-<style scoped>
-.my-dropdown-toggle {
-  border-radius: 5px;
-
-  ::v-deep .dropdown-toggle {
-    color: tomato;
-    font-size: 25px;
-    font-weight: 800;
-  }
-
-  ::v-deep .dropdown-toggle-placeholder {
-    color: #c4c4c4;
-  }
-}
-</style>
