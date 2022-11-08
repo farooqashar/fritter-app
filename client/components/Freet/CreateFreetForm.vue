@@ -12,7 +12,7 @@ export default {
       method: 'POST',
       hasBody: true,
       fields: [
-        {id: 'content', label: 'Content', value: ''},
+        {id: 'content', label: 'Content', value: this.$store.state.selectExampleFreet.name},
         {id: 'source', label: 'Source', value: ''}
       ],
       title: 'Create a freet',

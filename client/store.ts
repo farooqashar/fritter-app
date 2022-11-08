@@ -11,6 +11,8 @@ const store = new Vuex.Store({
   state: {
     filter: null, // Username to filter shown freets by (null = show all)
     freets: [], // All freets created in the app
+    exampleFreets: [],
+    selectExampleFreet: {name: "Select an Example Freet"},
     username: null, // Username of the logged in user
     userId: null, // id of the logged in user
     alerts: {} // global success/error messages encountered during submissions to non-visible forms
@@ -52,6 +54,20 @@ const store = new Vuex.Store({
        * @param freets - Freets to store
        */
       state.freets = freets;
+    },
+    updateExampleFreets(state, exampleFreets) {
+      /**
+       * Update the stored freets to the provided freets.
+       * @param freets - Freets to store
+       */
+      state.exampleFreets = exampleFreets;
+    },
+    updateSelectedExampleFreet(state, selectExampleFreet) {
+      /**
+       * Update the stored freets to the provided freets.
+       * @param freets - Freets to store
+       */
+      state.selectExampleFreet = selectExampleFreet;
     },
     async refreshFreets(state) {
       /**
