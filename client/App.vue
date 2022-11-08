@@ -76,4 +76,48 @@ main {
 .alerts .success {
     background-color: rgb(45, 135, 87);
 }
+
+textarea {
+  font-family: inherit;
+  font-size: inherit;
+  width: 100%;
+  height: 150px;
+  padding: 12px 20px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  background-color: #f8f8f8;
+  resize: none;
+}
+
+textarea:focus {
+  background-color: lightgray;
+  width: 100%;
+}
+
+input[type=text] {
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border-radius: 10px;
+  border: none;
+  border-bottom: 2px solid;
+  ransition: width 0.4s ease-in-out;
+}
+
+input[type=text]:focus {
+  background-color: lightgray;
+  width: 100%;
+}
+
+button {
+  background-color: #3457D5;
+  border: none;
+  border-radius: 20px;
+  color: white;
+  padding: 16px 32px;
+  text-decoration: none;
+  margin: 4px 2px;
+  cursor: pointer;
+}
 </style>
