@@ -6,6 +6,7 @@
     <section>
       <header>
         <h2>Account settings for @{{ $store.state.username }}</h2>
+        <a href="#/editProfile">Edit Profile</a>
       </header>
       <ChangeUsernameForm />
       <ChangePasswordForm />

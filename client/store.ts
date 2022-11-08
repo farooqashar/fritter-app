@@ -13,6 +13,8 @@ const store = new Vuex.Store({
     freets: [], // All freets created in the app
     exampleFreets: [],
     selectExampleFreet: {name: "Select an Example Freet"},
+    curRelationshipStatus: "",
+    bff: [],
     username: null, // Username of the logged in user
     userId: null, // id of the logged in user
     alerts: {} // global success/error messages encountered during submissions to non-visible forms
@@ -68,6 +70,20 @@ const store = new Vuex.Store({
        * @param freets - Freets to store
        */
       state.selectExampleFreet = selectExampleFreet;
+    },
+    updateCurRelationshipStatus(state, curRelationshipStatus) {
+      /**
+       * Update the stored freets to the provided freets.
+       * @param freets - Freets to store
+       */
+      state.curRelationshipStatus = curRelationshipStatus;
+    },
+    updateBestFriends(state, bff) {
+      /**
+       * Update the stored freets to the provided freets.
+       * @param freets - Freets to store
+       */
+      state.bff = bff;
     },
     async refreshFreets(state) {
       /**

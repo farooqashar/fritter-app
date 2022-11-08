@@ -23,9 +23,7 @@ const router = express.Router();
 router.post(
   '/',
   [
-    userValidator.isUserLoggedIn,
-    relationshipValidator.isValidRelationshipStatus,
-    relationshipValidator.isValidBestFriends
+    userValidator.isUserLoggedIn
   ],
   async (req: Request, res: Response) => {
     const userId = (req.session.userId as string) ?? ''; // Will not be an empty string since its validated in isUserLoggedIn
@@ -49,9 +47,7 @@ router.post(
 router.put(
   '/',
   [
-    userValidator.isUserLoggedIn,
-    relationshipValidator.isValidRelationshipStatus,
-    relationshipValidator.isValidBestFriends
+    userValidator.isUserLoggedIn
   ],
   async (req: Request, res: Response) => {
     const userId = (req.session.userId as string) ?? ''; // Will not be an empty string since its validated in isUserLoggedIn
@@ -91,8 +87,12 @@ router.get(
     }
 
     const relationshipStatus = await UserRelationshipCollection.findUserRelationshipByUsername(req.query.userId as string);
-    const response = util.constructUserRelationshipResponse(relationshipStatus);
-    res.status(200).json(response);
+    if (relationshipStatus) {
+      const response = util.constructUserRelationshipResponse(relationshipStatus);
+      res.status(200).json(response);
+    } else {
+      res.json({error: 'No user relationship found'});
+    }
   }
 );
 
