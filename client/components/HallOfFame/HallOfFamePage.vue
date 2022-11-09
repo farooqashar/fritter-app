@@ -29,6 +29,7 @@
     <CelebrationConfetti />
     <h3>Game? Game!</h3>
     <Maze />
+    <chessboard />
   </main>
 </template>
 
@@ -37,6 +38,8 @@ import CelebrationConfetti from '@/components/Celebrations/CelebrationConfetti.v
 import FreetComponent from '@/components/Freet/FreetComponent.vue';
 import Ribbon from 'vue-ribbon';
 import Maze from 'vue-maze'
+import {chessboard} from 'vue-chessboard'
+import 'vue-chessboard/dist/vue-chessboard.css'
 
 
 export default {
@@ -45,7 +48,8 @@ export default {
     CelebrationConfetti,
     FreetComponent,
     Ribbon,
-    Maze
+    Maze,
+    chessboard
     }, 
   data() {
   return {
