@@ -11,10 +11,10 @@
       <section>
         <ExampleFreet />
         <center>
-          <h3>Start out by freeting today from a few example Freets above!</h3>
+          <h3>Start out by freeting today by looking and customizing your few example Freets above!</h3>
         </center>
       </section>
-      <CreateFreetForm />
+      <CreateFreetForm :current-freet="$store.state.selectExampleFreet.name" />
     </section>
     <section v-else>
       <header>

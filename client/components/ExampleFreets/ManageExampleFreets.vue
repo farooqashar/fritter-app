@@ -43,9 +43,9 @@ export default {
                                 headers: {'Content-Type': 'application/json'},
                             };
 
-                    options.body = JSON.stringify({ content: "Hello Fritter!" })
+                    options.body = JSON.stringify({ content: "" })
                     await fetch("/api/exampleFreets", options);
-                    this.$store.commit('updateExampleFreets', [{ name: "Hello Fritter!" }]);
+                    this.$store.commit('updateExampleFreets', []);
                 } else {
                     if (res) {
                     const options = {

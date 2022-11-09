@@ -12,7 +12,7 @@ const store = new Vuex.Store({
     filter: null, // Username to filter shown freets by (null = show all)
     freets: [], // All freets created in the app
     exampleFreets: [],
-    selectExampleFreet: {name: "Select an Example Freet"},
+    selectExampleFreet: {name: ""},
     curRelationshipStatus: "",
     bff: [],
     enemies: [],

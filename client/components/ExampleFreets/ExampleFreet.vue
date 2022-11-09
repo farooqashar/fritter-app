@@ -34,6 +34,7 @@ export default {
         methods: {
         methodToRunOnSelect(payload) {
             this.$store.commit('updateSelectedExampleFreet', payload);
+            this.getExampleFreets()
           },
         async getExampleFreets() {
             const url = this.$store.state.username ? `/api/exampleFreets?author=${this.$store.state.username}` : '/api/freets';
@@ -46,9 +47,9 @@ export default {
                                 headers: {'Content-Type': 'application/json'},
                             };
 
-                    options.body = JSON.stringify({ content: "Hello Fritter!" })
+                    options.body = JSON.stringify({ content: "" })
                     await fetch("/api/exampleFreets", options);
-                    this.$store.commit('updateExampleFreets', [{ name: "Hello Fritter!" }]);
+                    this.$store.commit('updateExampleFreets', []);
                 } else {
                     if (res) {
                     const dropdownOptions = []

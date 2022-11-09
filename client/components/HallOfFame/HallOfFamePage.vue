@@ -72,18 +72,12 @@ export default {
       this.getActualFreets()
   },
   async getActualFreets() {
-    console.log("freets")
-    console.log(this.$store.state.HOFfreets)
     if (this.$store.state.HOFfreets.length) {
       const fullFreets = []
         for (const id of this.$store.state.HOFfreets) {
             const url = this.$store.state.userId ? `/api/freets/${id}` : '/api/freets';
-                console.log("url")
-                console.log(url)
                 const r = await fetch(url);
                 const res = await r.json();
-                console.log("freets res")
-                console.log(res)
                 fullFreets.push(res)
         }
        this.actualFreets = fullFreets

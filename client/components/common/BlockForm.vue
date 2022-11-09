@@ -15,7 +15,7 @@
         <textarea
           v-if="field.id === 'content'"
           :name="field.id"
-          :value="field.value"
+          :value="$store.state.selectExampleFreet.name ? field.value = $store.state.selectExampleFreet.name: field.value"
           @input="field.value = $event.target.value"
         />
         <input
@@ -57,6 +57,7 @@ export default {
      * Options for submitting this form.
      */
     return {
+      contentValue: "",
       url: '', // Url to submit form to
       method: 'GET', // Form request method
       hasBody: false, // Whether or not form request has a body
@@ -64,7 +65,9 @@ export default {
       setUserId: false,
       refreshFreets: false, // Whether or not stored freets should be updated after form submission
       alerts: {}, // Displays success/error messages encountered during form submission
-      callback: null // Function to run after successful form submission
+      callback: null, // Function to run after successful form submission,
+      message: this.$store.state.selectExampleFreet.name
+      
     };
   },
   methods: {
