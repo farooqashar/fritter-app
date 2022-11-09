@@ -234,7 +234,6 @@ export default {
     column-gap: 50px;
     align: center;
     align-content: center;
-
 }
 
 .author {

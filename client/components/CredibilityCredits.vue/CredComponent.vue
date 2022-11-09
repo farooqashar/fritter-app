@@ -1,13 +1,25 @@
 <template>
-  <section>
-    User Credibility Credit: {{ $store.state.creds }}
+  <section class="card">
+    <info-card
+      id="info-card"
+      front-type="text"
+      back-type="text"
+      front-title="Your Credibility Credits"
+      :front-data="$store.state.creds"
+      back-title="Your Credibility Credits"
+      back-data="<i>Credibility Credits are accumulated when your freets contain sources in order to create a better user experience.</i>"
+    />
   </section>
 </template>
 
 <script>
+import InfoCard from 'vue-info-card';
+
+
 export default {
 
   components: {
+        InfoCard
         },
     mounted() {
          this.getCredibilityCredit()
@@ -41,3 +53,9 @@ export default {
     }
 
 </script>
+
+<style scoped>
+.card {
+width:97%;
+}
+</style>

@@ -5,26 +5,57 @@
   <main>
     <section>
       <header>
-        <center>
-          <h2>Account Settings For @{{ $store.state.username }} (ID: {{ $store.state.userId }})</h2>
-          <h3>Relationship Status: {{ $store.state.curRelationshipStatus.name.name }}</h3>
-          <h3>Friends: {{ $store.state.bff }}</h3>
-          <h3>Enemies: {{ $store.state.enemies }}</h3>
-          <CredComponent />
-        </center>
-        <router-link
-          to="/editProfile"
-          tag="button"
-        >
-          Edit Profile
-        </router-link>
+        <h2>Account Settings For @{{ $store.state.username }} (ID: {{ $store.state.userId }})</h2>
+        <div class="top">
+          <router-link
+            to="/editProfile"
+            tag="button"
+          >
+            Edit Profile
+          </router-link>
+          <br>
+          <router-link
+            to="/manageEnemies"
+            tag="button"
+          >
+            Manage Enemies
+          </router-link>
+        </div>
         <br>
-        <router-link
-          to="/manageEnemies"
-          tag="button"
-        >
-          Manage Enemies
-        </router-link>
+        <br>
+        <center>
+          <CredComponent />
+          <vue-flashcard 
+            front="Relationship Status" 
+            :back="$store.state.curRelationshipStatus.name"
+            color-back="#72A0C1"
+            color-text-back="blue"
+            header-front=""
+            header-back="Relationship Status"
+            footer-front="Click To Reveal"
+            footer-back="Click To Go Back"
+          />
+          <vue-flashcard 
+            front="Best Friends" 
+            :back="$store.state.bff"
+            color-back="#72A0C1"
+            color-text-back="blue"
+            header-front=""
+            header-back="Best Friends"
+            footer-front="Click To Reveal"
+            footer-back="Click To Go Back"
+          />
+          <vue-flashcard 
+            front="Enemies" 
+            :back="$store.state.enemies"
+            color-back="#72A0C1"
+            color-text-back="blue"
+            header-front=""
+            header-back="Enemies"
+            footer-front="Click To Reveal"
+            footer-back="Click To Go Back"
+          />
+        </center>
       </header>
       <ChangeUsernameForm />
       <ChangePasswordForm />
@@ -45,7 +76,7 @@ import ChangePasswordForm from '@/components/Account/ChangePasswordForm.vue';
 import DeleteAccountForm from '@/components/Account/DeleteAccountForm.vue';
 import LogoutForm from '@/components/Account/LogoutForm.vue';
 import CredComponent from '/Users/asharfarooq/Downloads/6.1040/Assignments/fritter-app/client/components/CredibilityCredits.vue/CredComponent.vue';
-
+import vueFlashcard from 'vue-flashcard';
 
 export default {
   name: 'AccountPage',
@@ -54,7 +85,20 @@ export default {
     ChangePasswordForm,
     DeleteAccountForm,
     LogoutForm,
-    CredComponent
+    CredComponent,
+    vueFlashcard
     }
 };
 </script>
+
+<style scoped>
+
+ .top {   
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    column-gap: 50px;
+    align: center;
+    align-content: center;
+}
+</style>
