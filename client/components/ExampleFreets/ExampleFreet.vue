@@ -38,9 +38,13 @@ export default {
           },
         async getExampleFreets() {
             const url = this.$store.state.username ? `/api/exampleFreets?author=${this.$store.state.username}` : '/api/freets';
+            console.log("url")
+            console.log(url)
             try {
                 const r = await fetch(url);
                 const res = await r.json();
+                console.log("res")
+                console.log(res)
                 if (res.error || res.length === 0) {
                     const options = {
                                 method: "POST",
@@ -49,6 +53,8 @@ export default {
 
                     options.body = JSON.stringify({ content: "" })
                     await fetch("/api/exampleFreets", options);
+                    console.log(options)
+                
                     this.$store.commit('updateExampleFreets', []);
                 } else {
                     if (res) {

@@ -53,6 +53,7 @@
       />
       <font-awesome-icon
         v-if="!editing"
+        id="editicon"
         icon="fa-solid fa-pen-to-square"
         @click="startEditing"
       />
@@ -93,6 +94,9 @@ export default {
       draft: this.freet.content, // Potentially-new content for this freet
       alerts: {} // Displays success/error messages encountered during freet modification
     };
+  },
+  mounted() {
+  this.delay()
   },
   methods: {
     startEditing() {
@@ -158,6 +162,7 @@ export default {
                   this.$store.commit('updateHOFFreets', result.freets);
                 }
                 this.$set(this.alerts, "Successfully toggled this freet to/from the Hall of Fame!", 'success')
+                setTimeout(() => this.$delete(this.alerts, "Successfully toggled this freet to/from the Hall of Fame!"), 3000);
               }
 
              } catch (e) {

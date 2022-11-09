@@ -87,6 +87,10 @@ export default {
              } catch (e) {
             console.warn(e)
              }
+        this.$router.push({name: 'Account'}); 
+        this.$store.commit('alert', {
+          message: 'Your Relationships Have Been Updated!', status: 'success'
+        });
         },
         async getRelationships() {
             const url = this.$store.state.userId ? `/api/users/relationships?userId=${this.$store.state.userId}` : '/api/freets';

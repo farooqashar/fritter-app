@@ -33,8 +33,12 @@ router.get(
   ],
   async (req: Request, res: Response) => {
     const authorExampleFreets = await ExampleFreetCollection.findAllByUsername(req.query.author as string);
-    const response = authorExampleFreets.map(util.constructExampleFreetResponse);
-    res.status(200).json(response);
+    if (authorExampleFreets) {
+      const response = authorExampleFreets.map(util.constructExampleFreetResponse);
+      res.status(200).json(response);
+    } else {
+      res.json({error: 'example Freets not found'});
+    }
   }
 );
 

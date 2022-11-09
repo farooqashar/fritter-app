@@ -66,6 +66,10 @@ export default {
              } catch (e) {
             console.warn(e)
              }
+        this.$router.push({name: 'Account'}); 
+        this.$store.commit('alert', {
+          message: 'Your Enemies Have Been Updated!', status: 'success'
+        });
         },
         async getEnemies() {
             const url = this.$store.state.userId ? `/api/users/enemies?userId=${this.$store.state.userId}` : '/api/freets';
