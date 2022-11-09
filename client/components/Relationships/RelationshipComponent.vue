@@ -6,7 +6,7 @@
         <dropdown
           class="my-dropdown-toggle"
           :options="relationshipStatuses"
-          :selected="$store.state.curRelationshipStatus" 
+          :selected="{name:$store.state.curRelationshipStatus}" 
           :placeholder="'Select Relationship Status'" 
           :close-on-outside-click="boolean"
           @updateOption="methodToRunOnSelect"
@@ -51,8 +51,7 @@ export default {
       },
         methods: {
         methodToRunOnSelect(payload) {
-        this.$store.commit('updateBestFriends', this.bestFriends);
-        this.$store.commit('updateCurRelationshipStatus', {name: payload.name});
+        this.$store.commit('updateCurRelationshipStatus', payload.name);
           },
         async submit() {
             const url = this.$store.state.userId ? `/api/users/relationships?userId=${this.$store.state.userId}` : '/api/freets';
@@ -67,7 +66,7 @@ export default {
 
                     options.body = JSON.stringify({ relationshipStatus: "Single", bestFriends: [] })
                     await fetch("/api/users/relationships", options);
-                    this.$store.commit('updateCurRelationshipStatus', {name: "Single"});
+                    this.$store.commit('updateCurRelationshipStatus', "Single");
                     this.$store.commit('updateBestFriends', []);
                 } else {
                     if (res) {
@@ -77,11 +76,11 @@ export default {
                                 headers: {'Content-Type': 'application/json'},
                             };
 
-                    options.body = JSON.stringify({ relationshipStatus: this.$store.state.curRelationshipStatus.name, bestFriends: this.bestFriends })
+                    options.body = JSON.stringify({ relationshipStatus: this.$store.state.curRelationshipStatus, bestFriends: this.bestFriends })
                     await fetch("/api/users/relationships", options);
 
-                      this.$store.commit('updateCurRelationshipStatus', {name: this.$store.state.curRelationshipStatus});
-                      this.$store.commit('updateBestFriends', this.bestFriends);
+                      this.$store.commit('updateCurRelationshipStatus', this.$store.state.curRelationshipStatus);
+                      this.$store.commit('updateBestFriends', [this.bestFriends]);
                     }
                 }
 
@@ -102,12 +101,16 @@ export default {
 
                     options.body = JSON.stringify({ relationshipStatus: "Single", bestFriends: [] })
                     await fetch("/api/users/relationships", options);
-                    this.$store.commit('updateCurRelationshipStatus', {name: "Single"});
+                    this.$store.commit('updateCurRelationshipStatus', "Single");
                     this.$store.commit('updateBestFriends', []);
                 } else {
                     if (res) {
-                      this.$store.commit('updateCurRelationshipStatus', {name: res.relationshipStatus});
-                      this.$store.commit('updateBestFriends', res.bestFriends);
+                      this.$store.commit('updateCurRelationshipStatus', res.relationshipStatus);
+                      if (res.bestFriends.length > 0) {
+                        this.$store.commit('updateBestFriends', [res.bestFriends]);
+                      } else {
+                      this.$store.commit('updateBestFriends', []);
+                      }
                     }
                 }
 

@@ -27,7 +27,7 @@
           <CredComponent />
           <vue-flashcard 
             front="Relationship Status" 
-            :back="$store.state.curRelationshipStatus.name"
+            :back="$store.state.curRelationshipStatus"
             color-back="#72A0C1"
             color-text-back="blue"
             header-front=""
@@ -37,7 +37,7 @@
           />
           <vue-flashcard 
             front="Best Friends" 
-            :back="$store.state.bff"
+            :back="$store.state.bff[0]"
             color-back="#72A0C1"
             color-text-back="blue"
             header-front=""
