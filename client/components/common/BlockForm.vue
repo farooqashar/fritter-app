@@ -11,7 +11,7 @@
         v-for="field in fields"
         :key="field.id"
       >
-        <label :for="field.id">{{ field.label }}:</label>
+        <label :for="field.id">{{ field.label }}</label>
         <textarea
           v-if="field.id === 'content'"
           :name="field.id"
@@ -23,6 +23,7 @@
           :type="field.id === 'password' ? 'password' : 'text'"
           :name="field.id"
           :value="field.value"
+          :placeholder=" field.placeholder ? field.placeholder : '' "
           @input="field.value = $event.target.value"
         >
       </div>
@@ -33,7 +34,7 @@
     <button
       type="submit"
     >
-      {{ title }}
+      {{ buttonTitle ? buttonTitle : title }}
     </button>
     <section class="alerts">
       <article
@@ -119,8 +120,8 @@ export default {
 
 <style scoped>
 form {
-  border: 2px solid #111;
-  border-radius: 2px;
+  border: 2px solid;
+  border-radius: 20px;
   padding: 0.5rem;
   display: flex;
   flex-direction: column;

@@ -6,38 +6,23 @@
     class="freet"
   >
     <header>
-      <h3 class="author">
-        @{{ freet.author }}
-      </h3>
-      <div
-        v-if="$store.state.username === freet.author"
-        class="actions"
-      >
-        <button
-          v-if="editing"
-          @click="submitEdit"
+      <section class="top">
+        <font-awesome-icon icon="fa-solid fa-user" />
+        <div class="author">
+          @{{ freet.author }}
+        </div>
+        <div
+          v-if="freet.source"
+          class="source"
         >
-          ✅ Save changes
-        </button>
-        <button
-          v-if="editing"
-          @click="stopEditing"
-        >
-          🚫 Discard changes
-        </button>
-        <button
-          v-if="!editing"
-          @click="startEditing"
-        >
-          ✏️ Edit
-        </button>
-        <button @click="deleteFreet">
-          🗑️ Delete
-        </button>
-        <button @click="toggleHOF">
-          Hall of Fame Toggle 
-        </button>
-      </div>
+          <a :href="freet.source"><font-awesome-icon icon="fa-solid fa-link" />
+          </a>
+        </div>
+        <div class="info">
+          {{ freet.dateModified }}
+          <i v-if="freet.edited">(edited)</i>
+        </div>
+      </section>
     </header>
     <textarea
       v-if="editing"
@@ -51,10 +36,35 @@
     >
       {{ freet.content }}
     </p>
-    <p class="info">
-      Posted at {{ freet.dateModified }}
-      <i v-if="freet.edited">(edited)</i>
-    </p>
+
+    <div
+      v-if="$store.state.username === freet.author"
+      class="actions"
+    >
+      <font-awesome-icon
+        v-if="editing"
+        icon="fa-solid fa-floppy-disk"
+        @click="submitEdit"
+      />
+      <font-awesome-icon
+        v-if="editing"
+        icon="fa-solid fa-delete-left"
+        @click="stopEditing"
+      />
+      <font-awesome-icon
+        v-if="!editing"
+        icon="fa-solid fa-pen-to-square"
+        @click="startEditing"
+      />
+      <font-awesome-icon
+        icon="fa-solid fa-trash"
+        @click="deleteFreet"
+      />
+      <font-awesome-icon
+        icon="fa-solid fa-star"
+        @click="toggleHOF"
+      />
+    </div>
     <section class="alerts">
       <article
         v-for="(status, alert, index) in alerts"
@@ -147,6 +157,9 @@ export default {
 
                   this.$store.commit('updateHOFFreets', result.freets);
                 }
+            this.$store.commit('alert', {
+              message: 'Successfully toggled this freet to/from the Hall of Fame!', status: 'success'
+          });
               }
 
              } catch (e) {
@@ -214,5 +227,32 @@ export default {
     border: 1px solid #111;
     padding: 20px;
     position: relative;
+}
+
+.top {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    column-gap: 50px;
+    align: center;
+    align-content: center;
+
+}
+
+.author {
+font-weight: bold;
+}
+
+.source {
+  align: right;
+}
+
+.info {
+font-size: 15px;
+}
+
+.actions {
+  display: flex;
+  flex-direction: row;
 }
 </style>

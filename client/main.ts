@@ -18,6 +18,10 @@ import { faStar } from '@fortawesome/free-solid-svg-icons'
 import { faUser } from '@fortawesome/free-solid-svg-icons'
 import { faPlus } from '@fortawesome/free-solid-svg-icons'
 import { faLink } from '@fortawesome/free-solid-svg-icons'
+import { faFloppyDisk } from '@fortawesome/free-solid-svg-icons'
+import { faDeleteLeft } from '@fortawesome/free-solid-svg-icons'
+import { faTrash } from '@fortawesome/free-solid-svg-icons'
+import { faPenToSquare } from '@fortawesome/free-solid-svg-icons'
 
 /* add icons to the library */
 library.add(faUserSecret)
@@ -26,6 +30,10 @@ library.add(faStar)
 library.add(faUser)
 library.add(faPlus)
 library.add(faLink)
+library.add(faFloppyDisk)
+library.add(faDeleteLeft)
+library.add(faTrash)
+library.add(faPenToSquare)
 
 /* add font awesome icon component */
 Vue.component('font-awesome-icon', FontAwesomeIcon)

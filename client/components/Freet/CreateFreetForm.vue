@@ -12,10 +12,11 @@ export default {
       method: 'POST',
       hasBody: true,
       fields: [
-        {id: 'content', label: 'Content', value: this.$store.state.selectExampleFreet.name},
-        {id: 'source', label: 'Source', value: ''}
+        {id: 'content', label: '', value: this.$store.state.selectExampleFreet.name},
+        {id: 'source', label: '', value: '', placeholder: 'Enter a Source For Your Freet (optional)'}
       ],
-      title: 'Create a freet',
+      title: "What's Happening?",
+      buttonTitle: "Freet",
       refreshFreets: true,
       callback: () => {
         const message = 'Successfully created a freet!';

@@ -107,7 +107,6 @@ input[type=text] {
 
 input[type=text]:focus {
   background-color: lightgray;
-  width: 100%;
 }
 
 button {
