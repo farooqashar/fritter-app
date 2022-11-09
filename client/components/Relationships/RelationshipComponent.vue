@@ -2,7 +2,7 @@
   <main>
     <form @submit.prevent="submit">
       <section>
-        <label>Relationship Status</label>
+        <label>Relationship Status: </label>
         <dropdown
           class="my-dropdown-toggle"
           :options="relationshipStatuses"
@@ -16,7 +16,7 @@
         <label :for="bestFriendsList">Best Friends:</label>
         <textarea
           :name="bestFriendsList"
-          :value="$store.state.bestFriends"
+          :value="$store.state.bff"
           @input="bestFriends = $event.target.value"
         />
       </section>
