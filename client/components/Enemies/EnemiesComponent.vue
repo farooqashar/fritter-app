@@ -1,6 +1,7 @@
 <template>
   <main>
     <form @submit.prevent="submit">
+      <br>
       <section>
         <label :for="enemiList">Enemies:</label>
         <textarea

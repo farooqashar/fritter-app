@@ -39,7 +39,7 @@
 
     <div
       v-if="$store.state.username === freet.author"
-      class="actions"
+      class="top"
     >
       <font-awesome-icon
         v-if="editing"

@@ -11,7 +11,7 @@
       <section>
         <ExampleFreet />
         <center>
-          <h3>Start out by freeting today by looking and customizing your few example Freets above!</h3>
+          <h3>Start out by freeting today by selecting an example Freet above!</h3>
         </center>
       </section>
       <CreateFreetForm :current-freet="$store.state.selectExampleFreet.name" />
