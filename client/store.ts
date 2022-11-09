@@ -15,6 +15,7 @@ const store = new Vuex.Store({
     selectExampleFreet: {name: ""},
     curRelationshipStatus: "",
     bff: [],
+    bio: "",
     enemies: [],
     HOFfreets: [],
     creds: 0,
@@ -108,6 +109,13 @@ const store = new Vuex.Store({
        * @param freets - Freets to store
        */
       state.creds = creds;
+    },
+    updateBio(state, bio) {
+      /**
+       * Update the stored freets to the provided freets.
+       * @param freets - Freets to store
+       */
+      state.bio = bio;
     },
     async refreshFreets(state) {
       /**

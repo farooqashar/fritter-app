@@ -105,6 +105,12 @@ export default {
           this.$store.commit('setUserId', res.user ? res.user._id : null);
         }
 
+        if (this.setBio) {
+          const text = await r.text();
+          const res = text ? JSON.parse(text) : {user: null};
+          this.$store.commit('updateBio', res.user ? res.user.bio : null);
+        }
+
         if (this.refreshFreets) {
           this.$store.commit('refreshFreets');
         }

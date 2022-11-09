@@ -105,33 +105,51 @@ class FreetCollection {
     }
 
     if (updateObj.likes) {
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-      freet.likes = updateObj.likes;
+      if (freet.likes) {
+        freet.likes = Number(freet.likes) + 1;
+      } else {
+        freet.likes = 1;
+      }
     }
 
     if (updateObj.laughs) {
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-      freet.laughs = updateObj.laughs;
+      if (freet.laughs) {
+        freet.laughs = Number(freet.laughs) + 1;
+      } else {
+        freet.laughs = 1;
+      }
     }
 
     if (updateObj.loves) {
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-      freet.loves = updateObj.loves;
+      if (freet.loves) {
+        freet.loves = Number(freet.loves) + 1;
+      } else {
+        freet.loves = 1;
+      }
     }
 
     if (updateObj.angries) {
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-      freet.angries = updateObj.angries;
+      if (freet.angries) {
+        freet.angries = Number(freet.angries) + 1;
+      } else {
+        freet.angries = 1;
+      }
     }
 
     if (updateObj.sadness) {
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-      freet.sadness = updateObj.sadness;
+      if (freet.sadness) {
+        freet.sadness = Number(freet.sadness) + 1;
+      } else {
+        freet.sadness = 1;
+      }
     }
 
     if (updateObj.reports) {
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-      freet.reports = updateObj.reports;
+      if (freet.reports) {
+        freet.reports = Number(freet.reports) + 1;
+      } else {
+        freet.reports = 1;
+      }
     }
 
     if (updateObj.source) {

@@ -92,7 +92,8 @@ export default {
     return {
       editing: false, // Whether or not this freet is in edit mode
       draft: this.freet.content, // Potentially-new content for this freet
-      alerts: {} // Displays success/error messages encountered during freet modification
+      alerts: {}, // Displays success/error messages encountered during freet modification
+      likes: 0
     };
   },
   methods: {
@@ -109,6 +110,18 @@ export default {
        */
       this.editing = false;
       this.draft = this.freet.content;
+    },
+    async likedFreet() {
+        const url = `/api/freets/${this.freet._id}`
+        const options = {
+         method: "PUT",
+               headers: {'Content-Type': 'application/json'},
+          };
+        options.body = JSON.stringify({likes: 10})
+        const r = await fetch(url, options);
+        const res = await r.json();
+        this.likes = res.freet.likes
+        this.$refs.getFreetsForm.submit();
     },
     deleteFreet() {
       /**

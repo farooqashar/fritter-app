@@ -6,6 +6,7 @@
     <section>
       <header>
         <h2>Account Settings For @{{ $store.state.username }} (ID: {{ $store.state.userId }})</h2>
+        <center><p>{{ $store.state.bio ? $store.state.bio : " " }}</p></center>
         <div class="top">
           <router-link
             to="/editProfile"
@@ -59,6 +60,7 @@
       </header>
       <ChangeUsernameForm />
       <ChangePasswordForm />
+      <ChangeBio />
     </section>
     <section>
       <header>
@@ -74,6 +76,7 @@
 import ChangeUsernameForm from '@/components/Account/ChangeUsernameForm.vue';
 import ChangePasswordForm from '@/components/Account/ChangePasswordForm.vue';
 import DeleteAccountForm from '@/components/Account/DeleteAccountForm.vue';
+import ChangeBio from '@/components/Account/ChangeBio.vue';
 import LogoutForm from '@/components/Account/LogoutForm.vue';
 import CredComponent from '/Users/asharfarooq/Downloads/6.1040/Assignments/fritter-app/client/components/CredibilityCredits.vue/CredComponent.vue';
 import vueFlashcard from 'vue-flashcard';
@@ -86,7 +89,8 @@ export default {
     DeleteAccountForm,
     LogoutForm,
     CredComponent,
-    vueFlashcard
+    vueFlashcard,
+    ChangeBio
     }
 };
 </script>
