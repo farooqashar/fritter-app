@@ -7,7 +7,8 @@
   >
     <header>
       <section class="top">
-        <font-awesome-icon icon="fa-solid fa-user" />
+        <avatar :username="freet.author" />
+
         <div class="author">
           @{{ freet.author }}
         </div>
@@ -79,8 +80,14 @@
 </template>
 
 <script>
+
+import Avatar from 'vue-avatar'
+
 export default {
   name: 'FreetComponent',
+  components: {
+    Avatar,
+  },
   props: {
     // Data from the stored freet
     freet: {

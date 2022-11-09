@@ -3,6 +3,10 @@
 
 <template>
   <main>
+    <Ribbon
+      text="Hall of Fame!"
+      position="left-top"
+    />
     <section>
       <header>
         <h2>@{{ $store.state.username }}'s Hall of Fame</h2>
@@ -23,18 +27,25 @@
       <h3>No Hall of Fame Freets found.</h3>
     </article>
     <CelebrationConfetti />
+    <h3>Game? Game!</h3>
+    <Maze />
   </main>
 </template>
 
 <script>
 import CelebrationConfetti from '@/components/Celebrations/CelebrationConfetti.vue';
 import FreetComponent from '@/components/Freet/FreetComponent.vue';
+import Ribbon from 'vue-ribbon';
+import Maze from 'vue-maze'
+
 
 export default {
   name: 'HallOfFamePage',
   components: {
     CelebrationConfetti,
-    FreetComponent
+    FreetComponent,
+    Ribbon,
+    Maze
     }, 
   data() {
   return {

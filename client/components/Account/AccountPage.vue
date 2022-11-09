@@ -81,6 +81,8 @@ import LogoutForm from '@/components/Account/LogoutForm.vue';
 import CredComponent from '/Users/asharfarooq/Downloads/6.1040/Assignments/fritter-app/client/components/CredibilityCredits.vue/CredComponent.vue';
 import vueFlashcard from 'vue-flashcard';
 
+
+
 export default {
   name: 'AccountPage',
   components: {

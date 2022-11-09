@@ -4,6 +4,7 @@ import App from './App.vue';
 import router from './router';
 import store from './store';
 Vue.config.productionTip = false;
+import 'vue-directive-tooltip/dist/vueDirectiveTooltip.css';
 
 /* import the fontawesome core */
 import { library } from '@fortawesome/fontawesome-svg-core'
@@ -45,3 +46,5 @@ new Vue({
   store,
   render: h => h(App)
 }).$mount('#app');
+
+Vue.use(Tooltip);
