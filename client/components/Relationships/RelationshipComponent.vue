@@ -64,10 +64,10 @@ export default {
                                 headers: {'Content-Type': 'application/json'},
                             };
 
-                    options.body = JSON.stringify({ relationshipStatus: "Single", bestFriends: [] })
+                    options.body = JSON.stringify({ relationshipStatus: "Single", bestFriends: [" "] })
                     await fetch("/api/users/relationships", options);
                     this.$store.commit('updateCurRelationshipStatus', "Single");
-                    this.$store.commit('updateBestFriends', []);
+                    this.$store.commit('updateBestFriends', [" "]);
                 } else {
                     if (res) {
 
@@ -102,14 +102,14 @@ export default {
                     options.body = JSON.stringify({ relationshipStatus: "Single", bestFriends: [] })
                     await fetch("/api/users/relationships", options);
                     this.$store.commit('updateCurRelationshipStatus', "Single");
-                    this.$store.commit('updateBestFriends', []);
+                    this.$store.commit('updateBestFriends', [" "]);
                 } else {
                     if (res) {
                       this.$store.commit('updateCurRelationshipStatus', res.relationshipStatus);
                       if (res.bestFriends.length > 0) {
                         this.$store.commit('updateBestFriends', [res.bestFriends]);
                       } else {
-                      this.$store.commit('updateBestFriends', []);
+                      this.$store.commit('updateBestFriends', [" "]);
                       }
                     }
                 }

@@ -47,7 +47,7 @@
           />
           <vue-flashcard 
             front="Enemies" 
-            :back="$store.state.enemies"
+            :back="$store.state.enemies[0]"
             color-back="#72A0C1"
             color-text-back="blue"
             header-front=""

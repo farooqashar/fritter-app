@@ -5,7 +5,7 @@
         <label :for="enemiList">Enemies:</label>
         <textarea
           :name="enemiList"
-          :value="$store.state.enemies"
+          :value="$store.state.enemies[0]"
           @input="ene = $event.target.value"
         />
       </section>
@@ -44,9 +44,9 @@ export default {
                                 headers: {'Content-Type': 'application/json'},
                             };
 
-                    options.body = JSON.stringify({ enemies: [] })
+                    options.body = JSON.stringify({ enemies: [" "] })
                     await fetch("/api/users/enemies", options);
-                    this.$store.commit('updateEnemies', []);
+                    this.$store.commit('updateEnemies', [" "]);
                 } else {
                     if (res) {
 
@@ -58,7 +58,7 @@ export default {
                     options.body = JSON.stringify({ enemies: this.ene })
                     await fetch("/api/users/enemies", options);
 
-                      this.$store.commit('updateEnemies', this.ene);
+                    this.$store.commit('updateEnemies', [this.ene]);
                     }
                 }
 
@@ -77,12 +77,18 @@ export default {
                                 headers: {'Content-Type': 'application/json'},
                             };
 
-                    options.body = JSON.stringify({ enemies: [] })
+                    options.body = JSON.stringify({ enemies: [" "] })
                     await fetch("/api/users/enemies", options);
-                    this.$store.commit('updateEnemies', []);
+                    this.$store.commit('updateEnemies', [" "]);
                 } else {
+                
                     if (res) {
-                      this.$store.commit('updateEnemies', res.enemies);
+                    
+                      if (res.enemies.length > 0) {
+                        this.$store.commit('updateEnemies', [res.enemies]);
+                      } else {
+                      this.$store.commit('updateEnemies', [" "]);
+                      }
                     }
                 }
 
