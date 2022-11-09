@@ -89,7 +89,7 @@ export default {
                 
                     if (res) {
                     
-                      if (res.enemies.length > 0) {
+                      if (res.enemies) {
                         this.$store.commit('updateEnemies', [res.enemies]);
                       } else {
                       this.$store.commit('updateEnemies', [" "]);
