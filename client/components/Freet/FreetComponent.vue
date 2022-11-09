@@ -157,9 +157,7 @@ export default {
 
                   this.$store.commit('updateHOFFreets', result.freets);
                 }
-            this.$store.commit('alert', {
-              message: 'Successfully toggled this freet to/from the Hall of Fame!', status: 'success'
-          });
+                this.$set(this.alerts, "Successfully toggled this freet to/from the Hall of Fame!", 'success')
               }
 
              } catch (e) {

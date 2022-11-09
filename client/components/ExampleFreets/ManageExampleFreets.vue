@@ -2,16 +2,18 @@
   <main>
     <section>
       <form @submit.prevent="submit">
-        <label :for="exampleFreet">Example Freet:</label>
-        <textarea
-          :name="exampleFreet"
-          :value="content"
-          @input="content = $event.target.value"
-        />
+        <div class="container">
+          <textarea
+            :name="exampleFreet"
+            :value="content"
+            placeholder="Enter A Custom Example Freet"
+            @input="content = $event.target.value"
+          />
+        </div>
         <button
           type="submit"
         >
-          Create Example Freet
+          Add Example Freet
         </button>
       </form>
     </section>
@@ -62,7 +64,11 @@ export default {
                     this.$store.commit('updateExampleFreets', dropdownOptions);
                     }
                 }
+              this.$store.commit('alert', {
+                message: 'Example Freet Successfully Added!', status: 'success'
+              });
 
+            this.$router.push({name: 'Home'});
             } catch (e) {
             console.warn(e)
             }
@@ -70,3 +76,23 @@ export default {
         }
     }
 </script>
+
+<style>
+
+textarea {
+  font-family: inherit;
+  font-size: inherit;
+  width: 100%;
+  height: 150px;
+  padding: 12px 20px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  background-color: #f8f8f8;
+  resize: none;
+}
+
+.container {
+padding-top: 30px;
+}
+</style>
