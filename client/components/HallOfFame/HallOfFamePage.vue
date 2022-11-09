@@ -9,22 +9,21 @@
       </header>
     </section>
     <h2>Hall of Fame</h2>
-    <CelebrationConfetti />
     <section
       v-if="$store.state.HOFfreets.length"
     >
-      <div
-        v-for="freet in $store.state.HOFfreets"
-        :key="freet"
-      >
-        Freet with ID {{ freet }}
-      </div>
+      <FreetComponent
+        v-for="freet in actualFreets"
+        :key="freet.freet.id"
+        :freet="freet.freet"
+      />
     </section>
     <article
       v-else
     >
       <h3>No Hall of Fame Freets found.</h3>
     </article>
+    <CelebrationConfetti />
   </main>
 </template>
 
@@ -71,17 +70,24 @@ export default {
              } catch (e) {
             console.warn(e)
              }
+      this.getActualFreets()
   },
   async getActualFreets() {
+    console.log("freets")
+    console.log(this.$store.state.HOFfreets)
     if (this.$store.state.HOFfreets.length) {
       const fullFreets = []
         for (const id of this.$store.state.HOFfreets) {
-            const url = this.$store.state.userId ? `/api/freets/:${id}` : '/api/freets';
+            const url = this.$store.state.userId ? `/api/freets/${id}` : '/api/freets';
+                console.log("url")
+                console.log(url)
                 const r = await fetch(url);
                 const res = await r.json();
+                console.log("freets res")
+                console.log(res)
                 fullFreets.push(res)
         }
-       this.$store.commit('updateHOFFreets', fullFreets);
+       this.actualFreets = fullFreets
       }
     }
   }
