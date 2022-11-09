@@ -95,9 +95,6 @@ export default {
       alerts: {} // Displays success/error messages encountered during freet modification
     };
   },
-  mounted() {
-  this.delay()
-  },
   methods: {
     startEditing() {
       /**
