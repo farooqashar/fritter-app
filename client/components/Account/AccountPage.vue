@@ -5,18 +5,33 @@
   <main>
     <section>
       <header>
-        <h2>Account settings for @{{ $store.state.username }}</h2>
-        <a href="#/editProfile">Edit Profile</a>
+        <center>
+          <h2>Account Settings For @{{ $store.state.username }} (ID: {{ $store.state.userId }})</h2>
+          <h3>Relationship Status: {{ $store.state.curRelationshipStatus.name.name }}</h3>
+          <h3>Friends: {{ $store.state.bff }}</h3>
+          <h3>Enemies: {{ $store.state.enemies }}</h3>
+          <CredComponent />
+        </center>
+        <router-link
+          to="/editProfile"
+          tag="button"
+        >
+          Edit Profile
+        </router-link>
         <br>
-        <a href="#/manageEnemies">Manage Enemies</a>
+        <router-link
+          to="/manageEnemies"
+          tag="button"
+        >
+          Manage Enemies
+        </router-link>
       </header>
       <ChangeUsernameForm />
       <ChangePasswordForm />
-      <CredComponent />
     </section>
     <section>
       <header>
-        <h2>Account management</h2>
+        <h2>Account Management</h2>
       </header>
       <LogoutForm />
       <DeleteAccountForm />

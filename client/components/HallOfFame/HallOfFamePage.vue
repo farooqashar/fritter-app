@@ -8,7 +8,6 @@
         <h2>@{{ $store.state.username }}'s Hall of Fame</h2>
       </header>
     </section>
-    <h2>Hall of Fame</h2>
     <section
       v-if="$store.state.HOFfreets.length"
     >

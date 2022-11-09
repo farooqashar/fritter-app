@@ -12,7 +12,7 @@ export default {
       method: 'PUT',
       hasBody: true,
       fields: [
-        {id: 'password', label: 'Password', value: ''}
+        {id: 'password', label: '', value: '', placeholder: "Enter a new password"}
       ],
       title: 'Change password',
       callback: () => {

@@ -22,19 +22,21 @@
         Hall of Fame
         <font-awesome-icon icon="fa-solid fa-star" />
       </router-link>
-      <router-link
-        v-if="$store.state.username"
-        to="/account"
-      >
-        Account
-        <font-awesome-icon icon="fa-solid fa-user" />
-      </router-link>
-      <router-link
-        v-else
-        to="/login"
-      >
-        Login
-      </router-link>
+      <section v-if="$store.state.username">
+        <router-link
+          to="/account"
+        >
+          Account
+          <font-awesome-icon icon="fa-solid fa-user" />
+        </router-link>
+      </section>
+      <section v-else>
+        <router-link
+          to="/login"
+        >
+          Login
+        </router-link>
+      </section>
     </div>
     <section class="alerts">
       <article

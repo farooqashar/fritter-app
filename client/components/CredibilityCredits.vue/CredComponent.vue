@@ -1,9 +1,7 @@
 <template>
-  <main>
-    <section>
-      User Credibility Credit: {{ $store.state.creds }}
-    </section>
-  </main>
+  <section>
+    User Credibility Credit: {{ $store.state.creds }}
+  </section>
 </template>
 
 <script>

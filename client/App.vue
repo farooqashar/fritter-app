@@ -95,7 +95,7 @@ textarea:focus {
   width: 100%;
 }
 
-input[type=text] {
+input[type=text],input[type=password] {
   padding: 12px 20px;
   margin: 8px 0;
   box-sizing: border-box;
@@ -105,7 +105,7 @@ input[type=text] {
   ransition: width 0.4s ease-in-out;
 }
 
-input[type=text]:focus {
+input[type=text]:focus, input[type=password]:focus {
   background-color: lightgray;
 }
 
