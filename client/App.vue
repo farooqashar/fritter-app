@@ -30,6 +30,8 @@ export default {
 </script>
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
 * {
   box-sizing: border-box;
 }
@@ -41,6 +43,7 @@ body {
   padding: 0;
   margin: 0;
   font-size: 1.2em;
+  font-family: "Roboto", sans-serif;
   background-color: #ADD8E6
 }
 

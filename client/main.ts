@@ -50,3 +50,7 @@ new Vue({
 }).$mount('#app');
 
 Vue.use(Tooltip);
+
+import VueRippler from "vue-rippler";
+
+Vue.use(VueRippler);

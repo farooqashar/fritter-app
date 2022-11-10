@@ -4,6 +4,10 @@
 
 <template>
   <nav>
+    <particles-bg
+      type="fountain"
+      bg="true"
+    />
     <div class="left">
       <img src="../../public/logo.svg">
       <h1 class="title">
@@ -55,6 +59,14 @@
     </section>
   </nav>
 </template>
+
+<script>
+import { ParticlesBg } from "particles-bg-vue";
+
+export default {
+  components: {ParticlesBg},
+}
+</script>
 
 <style scoped>
 nav {

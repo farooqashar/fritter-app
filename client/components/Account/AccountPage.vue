@@ -69,6 +69,7 @@
       <LogoutForm />
       <DeleteAccountForm />
     </section>
+    <Snow />
   </main>
 </template>
 
@@ -80,6 +81,7 @@ import ChangeBio from '@/components/Account/ChangeBio.vue';
 import LogoutForm from '@/components/Account/LogoutForm.vue';
 import CredComponent from '@/components/CredibilityCredits.vue/CredComponent.vue';
 import vueFlashcard from 'vue-flashcard';
+import Snow from 'vue-niege';
 
 
 
@@ -92,7 +94,8 @@ export default {
     LogoutForm,
     CredComponent,
     vueFlashcard,
-    ChangeBio
+    ChangeBio,
+    Snow
     }
 };
 </script>

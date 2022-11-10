@@ -2,33 +2,49 @@
 
 <template>
   <main>
-    <section v-if="$store.state.username">
-      <center>
-        <header>
-          <h2>How are you doing today, {{ $store.state.username }} ?</h2>
-        </header>
-      </center>
-      <section>
-        <ExampleFreet />
+    <br>
+    <center class="time">
+      <digital-clock
+        blink="true"
+        display-seconds="true"
+        twelve-hour="true"
+      />
+    </center>
+    <kinesis-container>
+      <section v-if="$store.state.username">
         <center>
-          <h3>Start out by freeting today by selecting an example Freet above!</h3>
+          <h2>
+            <kinesis-element strength="20">
+              How are you doing today, {{ $store.state.username }} ?
+            </kinesis-element>
+          </h2>
         </center>
+        <section>
+          <ExampleFreet />
+          <center>
+            <h3>
+              <kinesis-element strength="20">
+                Start out by freeting today by selecting an example Freet above!
+              </kinesis-element>
+            </h3>
+          </center>
+        </section>
+        <CreateFreetForm :current-freet="$store.state.selectExampleFreet.name" />
       </section>
-      <CreateFreetForm :current-freet="$store.state.selectExampleFreet.name" />
-    </section>
-    <section v-else>
-      <header>
-        <h2>Welcome to Fritter!</h2>
-      </header>
-      <article>
-        <h3>
-          <router-link to="/login">
-            Sign in
-          </router-link>
-          to create, edit, and delete freets.
-        </h3>
-      </article>
-    </section>
+      <section v-else>
+        <header>
+          <h2>Welcome to Fritter!</h2>
+        </header>
+        <article>
+          <h3>
+            <router-link to="/login">
+              Sign in
+            </router-link>
+            to create, edit, and delete freets.
+          </h3>
+        </article>
+      </section>
+    </kinesis-container>
     <section>
       <header>
         <div class="left">
@@ -71,10 +87,13 @@ import FreetComponent from '@/components/Freet/FreetComponent.vue';
 import ExampleFreet from '@/components/ExampleFreets/ExampleFreet.vue';
 import CreateFreetForm from '@/components/Freet/CreateFreetForm.vue';
 import GetFreetsForm from '@/components/Freet/GetFreetsForm.vue';
+import DigitalClock from "vue-digital-clock";
+import { KinesisContainer,KinesisElement } from 'vue-kinesis'
+
 
 export default {
   name: 'FreetPage',
-  components: {FreetComponent, GetFreetsForm, CreateFreetForm, ExampleFreet},
+  components: {FreetComponent, GetFreetsForm, CreateFreetForm, ExampleFreet, DigitalClock, KinesisContainer,KinesisElement },
   mounted() {
     this.$refs.getFreetsForm.submit();
   }
@@ -102,4 +121,11 @@ section .scrollbox {
   padding: 3%;
   overflow-y: scroll;
 }
+
+.time {
+  font-weight: bold;
+  color: darkblue;
+  font-size: 40px;
+}
+
 </style>
