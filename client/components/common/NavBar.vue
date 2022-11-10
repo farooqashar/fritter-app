@@ -22,6 +22,12 @@
         Hall of Fame
         <font-awesome-icon icon="fa-solid fa-star" />
       </router-link>
+      <router-link 
+        to="/games"
+      >
+        Games
+        <font-awesome-icon icon="fa-solid fa-gamepad" />
+      </router-link>
       <section v-if="$store.state.username">
         <router-link
           to="/account"

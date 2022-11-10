@@ -24,6 +24,7 @@ import { faDeleteLeft } from '@fortawesome/free-solid-svg-icons'
 import { faTrash } from '@fortawesome/free-solid-svg-icons'
 import { faPenToSquare } from '@fortawesome/free-solid-svg-icons'
 import { faThumbsUp } from '@fortawesome/free-solid-svg-icons'
+import { faGamepad } from '@fortawesome/free-solid-svg-icons'
 
 /* add icons to the library */
 library.add(faUserSecret)
@@ -37,6 +38,7 @@ library.add(faDeleteLeft)
 library.add(faTrash)
 library.add(faPenToSquare)
 library.add(faThumbsUp)
+library.add(faGamepad)
 
 /* add font awesome icon component */
 Vue.component('font-awesome-icon', FontAwesomeIcon)

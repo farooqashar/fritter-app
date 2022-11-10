@@ -78,7 +78,7 @@ import ChangePasswordForm from '@/components/Account/ChangePasswordForm.vue';
 import DeleteAccountForm from '@/components/Account/DeleteAccountForm.vue';
 import ChangeBio from '@/components/Account/ChangeBio.vue';
 import LogoutForm from '@/components/Account/LogoutForm.vue';
-import CredComponent from '/Users/asharfarooq/Downloads/6.1040/Assignments/fritter-app/client/components/CredibilityCredits.vue/CredComponent.vue';
+import CredComponent from '@/components/CredibilityCredits.vue/CredComponent.vue';
 import vueFlashcard from 'vue-flashcard';
 
 

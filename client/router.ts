@@ -3,6 +3,7 @@ import VueRouter from 'vue-router';
 import FreetsPage from './components/Freet/FreetsPage.vue';
 import AccountPage from './components/Account/AccountPage.vue';
 import HallOfFamePage from './components/HallOfFame/HallOfFamePage.vue';
+import Game from './components/Games/Game.vue';
 import ManageExampleFreets from './components/ExampleFreets/ManageExampleFreets.vue';
 import ManageEnemies from './components/Enemies/ManageEnemies.vue';
 import EditProfile from './components/Relationships/EditProfile.vue';
@@ -14,6 +15,7 @@ Vue.use(VueRouter);
 const routes = [
   {path: '/', name: 'Home', component: FreetsPage},
   {path: '/account', name: 'Account', component: AccountPage},
+  {path: '/games', name: 'Games', component: Game},
   {path: '/halloffame', name: 'Hall of Fame', component: HallOfFamePage},
   {path: '/manageEnemies', name: 'Manage Enemies', component: ManageEnemies},
   {path: '/manageExampleFreets', name: 'Manage Example Freets', component: ManageExampleFreets},

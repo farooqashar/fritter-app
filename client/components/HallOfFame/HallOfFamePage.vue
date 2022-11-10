@@ -27,9 +27,6 @@
       <h3>No Hall of Fame Freets found.</h3>
     </article>
     <CelebrationConfetti />
-    <h3>Game? Game!</h3>
-    <Maze />
-    <chessboard />
   </main>
 </template>
 
@@ -37,19 +34,13 @@
 import CelebrationConfetti from '@/components/Celebrations/CelebrationConfetti.vue';
 import FreetComponent from '@/components/Freet/FreetComponent.vue';
 import Ribbon from 'vue-ribbon';
-import Maze from 'vue-maze'
-import {chessboard} from 'vue-chessboard'
-import 'vue-chessboard/dist/vue-chessboard.css'
-
 
 export default {
   name: 'HallOfFamePage',
   components: {
     CelebrationConfetti,
     FreetComponent,
-    Ribbon,
-    Maze,
-    chessboard
+    Ribbon
     }, 
   data() {
   return {
